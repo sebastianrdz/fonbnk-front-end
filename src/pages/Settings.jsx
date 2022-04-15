@@ -1,6 +1,6 @@
 import { SideNavbar, BalanceCard, Buttons, Movments } from "../components"
 
-const Dashboard = () =>{
+const Settings = () =>{
   return (
     <div className="h-screen w-screen border-2 border-green-400">
       <SideNavbar/>
@@ -11,4 +11,4 @@ const Dashboard = () =>{
   )
 }
 
-export default Dashboard
+export default Settings

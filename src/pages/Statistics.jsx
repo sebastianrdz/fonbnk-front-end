@@ -1,14 +1,14 @@
 import { SideNavbar, BalanceCard, Buttons, Movments } from "../components"
 
-const Dashboard = () =>{
+const Statistics = () =>{
   return (
     <div className="h-screen w-screen border-2 border-green-400">
       <SideNavbar/>
-      {/* <BalanceCard/>
+      <BalanceCard/>
       <Buttons/>
-      <Movments/> */}
+      <Movments/>
     </div>
   )
 }
 
-export default Dashboard
+export default Statistics
