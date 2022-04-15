@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Router>
-        <SideNavbar/>
+        {/* <SideNavbar/> */}
         <Routes>
           <Route path="/" element={<StartPage />} />
           <Route path="/dashboard" element={<Dashboard />} />

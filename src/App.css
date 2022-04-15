@@ -7,3 +7,13 @@
 .active, a:hover  {
   color: #D74C4B;
 }
+
+.nav__bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("./assets/Vector_3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
