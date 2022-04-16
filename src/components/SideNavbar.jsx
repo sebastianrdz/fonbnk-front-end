@@ -28,12 +28,14 @@ const SideNavbar = () =>{
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <div>
-      <div className="h-screen w-3/4 md:w-1/4 rounded-r-2xl hidden bg-white drop-shadow-md flex-col md:flex">
+      <div className="h-screen w-56 xl:w-96 duration-200 rounded-r-2xl hidden bg-white drop-shadow-md flex-col md:flex">
         <Block/>
       </div>
+
+      {/* // Relative? */}
       <div className="flex relative md:hidden">
         {toggleMenu && (
-          <div className="h-screen w-3/4 md:w-1/4 rounded-r-2xl bg-white drop-shadow-md flex-col flex">
+          <div className="w-56 rounded-r-2xl bg-white drop-shadow-md flex-col flex absolute top-12">
             <Block/>
           </div>
         )}
