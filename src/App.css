@@ -40,6 +40,10 @@
 .bg-gray-bnk-200 {
   background-color: #53565A;
 }
+.bg-gray-bnk-200-t {
+  background-color: #53565A40;
+}
+
 .text-gray-bnk-100 {
   color: #C4C3C5;
 }
