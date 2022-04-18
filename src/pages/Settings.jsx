@@ -2,11 +2,9 @@ import { SideNavbar, BalanceCard, Buttons, Movments } from "../components"
 
 const Settings = () =>{
   return (
-    <div className="h-screen w-screen border-2 border-green-400">
+    <div className="h-screen w-screen ">
       <SideNavbar/>
-      {/* <BalanceCard/>
-      <Buttons/>
-      <Movments/> */}
+      Settings
     </div>
   )
 }

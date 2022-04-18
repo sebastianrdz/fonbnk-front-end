@@ -5,3 +5,5 @@ export { default as Movments } from './Movements';
 export { default as SideNavbar } from './SideNavbar';
 export { default as SignUpModal } from './SignUpModal';
 export { default as TransferModal } from './TransferModal';
+export { default as Layout } from './Layout';
+export { default as RequireAuth } from './RequireAuth';

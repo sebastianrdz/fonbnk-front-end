@@ -1,7 +1,10 @@
 import React , { useState } from "react"
 import { SideNavbar, BalanceCard, Buttons, Movments, TransferModal } from "../components"
 
+
 const Dashboard = () =>{
+
+  // console.log(auth.user, auth.pwd, auth.userId, auth.accessToken);
   const [toggleTransfer, setToggleTransfer] = useState(false);
   
   return (

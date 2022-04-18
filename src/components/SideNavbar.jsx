@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Logo from '../assets/Group_17.png'
 import { NavLink } from 'react-router-dom';
-import { RiMenu3Line, RiArrowLeftCircleFill, RiUser3Fill, RiCloseLine, RiLogoutCircleRLine, RiLayout2Fill, RiPieChartFill, RiSettings4Fill } from 'react-icons/ri';
+import { RiMenu3Line, RiArrowLeftCircleFill, RiUser3Fill, RiLogoutCircleRLine, RiLayout2Fill, RiPieChartFill, RiSettings4Fill } from 'react-icons/ri';
+
+const clearStorage = () => {
+  localStorage.clear();
+}
 
 const Menu = () => (
   <>
@@ -9,7 +13,7 @@ const Menu = () => (
     <p><NavLink to="/statistics" exact className='flex flex-row items-center py-2 px-4 my-2 text-lg font-semibold'><RiPieChartFill className=' mr-2 '/>Statistics</NavLink></p>
     <p><NavLink to="/profile" exact className='flex flex-row items-center py-2 px-4 my-2 text-lg font-semibold'><RiUser3Fill className=' mr-2 '/>Profile</NavLink></p>
     <p><NavLink to="/settings" exact className='flex flex-row items-center py-2 px-4 my-2 text-lg font-semibold'><RiSettings4Fill className=' mr-2 '/>Settings</NavLink></p>
-    <p><NavLink to="/" exact className='flex flex-row items-center py-2 px-4 my-2 text-lg font-semibold'><RiLogoutCircleRLine className=' mr-2 '/>Logout</NavLink></p>
+    <p><NavLink to="/" exact onClick={() => clearStorage()} className='flex flex-row items-center py-2 px-4 my-2 text-lg font-semibold'><RiLogoutCircleRLine className=' mr-2 '/>Logout</NavLink></p>
   </>
 )
 
