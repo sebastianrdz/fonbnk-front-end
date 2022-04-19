@@ -35,8 +35,7 @@ const SideNavbar = () =>{
       <div className="h-screen w-56 xl:w-96 duration-200 rounded-r-2xl hidden bg-white drop-shadow-md flex-col md:flex">
         <Block/>
       </div>
-
-      {/* // Relative? */}
+      
       <div className="flex relative md:hidden">
         {toggleMenu && (
           <div className="w-56 rounded-r-2xl bg-white drop-shadow-md flex-col flex absolute top-12">
@@ -46,7 +45,6 @@ const SideNavbar = () =>{
         {toggleMenu
         ? <RiArrowLeftCircleFill className="text-gray-bnk-200 m-4 cursor-pointer" size={27} onClick={() => setToggleMenu(false)}/>
         : <RiMenu3Line className="text-gray-bnk-200 m-4 cursor-pointer" size={27} onClick={() => setToggleMenu(true)}/>}
-        
       </div>
     </div>
   )

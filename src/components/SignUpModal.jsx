@@ -1,13 +1,13 @@
 import React, { useCallback, useRef, useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from '../api/axios';
-import useAuth from '../hooks/useAuth';
+import { useAuth } from '../hooks';
 
-const USER_REGEX = /^[a-zA-Z][a-zA-A0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{3,23}$/;
+// const USER_REGEX = /^[a-zA-Z][a-zA-A0-9-_]{3,23}$/;
+// const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{3,23}$/;
 const REGISTER_URL = '/users/register'
 
-const SignUpModal = ({ setToggleLogin }) => {
+const SignUpModal = ({setToggleLogin}) => {
   const { setAuth } = useAuth();
 
   const navigate = useNavigate();
@@ -53,17 +53,16 @@ const SignUpModal = ({ setToggleLogin }) => {
     setErrMsg('');
   }, [user, pwd, matchPwd])
 
+  const handleChange = useCallback(event => {
+    setToggleLogin(true)
+  }, [setToggleLogin])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     try {
       const response = await axios.post(REGISTER_URL,
         { username: user, password: pwd }
-        // JSON.stringify({ username: user, password: pwd }),
-        // {
-        //   headers: { 'Content-Type':'application/json'},
-        //   withCredentials: true
-        // }
       );
       const accessToken = response?.data?.token;
       const userId = response?.data?.userId;
@@ -86,10 +85,6 @@ const SignUpModal = ({ setToggleLogin }) => {
 
     
   }
-
-  const handleChange = useCallback(event => {
-    setToggleLogin(!event.target.value)
-  }, [setToggleLogin])
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col p-6 bg-white drop-shadow-md rounded-2xl m-auto">
@@ -138,7 +133,7 @@ const SignUpModal = ({ setToggleLogin }) => {
         className="bg-green-bnk-200 text-white rounded-2xl outline-none drop-shadow-md duration-200 h-12 w-64 my-4 hover:bg-green-600"
       >Sign Up</button>
 
-      <p className="flex justify-center font-bold text-sm mt-8">Aready have an account?<a onClick={handleChange} className="text-green-bnk-200 ml-1 hover:text-green-600 cursor-pointer"> Login</a></p>
+      <p className="flex justify-center font-bold text-sm mt-8">Aready have an account?<a onClick={() => setToggleLogin(true)} className="text-green-bnk-200 ml-1 hover:text-green-600 cursor-pointer"> Login</a></p>
     </form>
   )
 }

@@ -1,11 +1,13 @@
 import React , { useCallback, useState, useRef } from 'react';
 import axios from '../api/axios';
-import useAuth from '../hooks/useAuth';
+import { useAuth, useLocalStorage } from '../hooks';
 
 const TRANSFER_URL = '/users/transfer';
 
 const TransferModal = ({setToggleTransfer}) =>{
   const { auth } = useAuth();
+
+  const [toggleLoading, setToggleLoading] = useState(false); //TODO
 
   const errRef = useRef();
   const sucRef = useRef();
@@ -16,7 +18,7 @@ const TransferModal = ({setToggleTransfer}) =>{
   const [succesMsg, setSuccesMsg] = useState('');
 
   const handleChange = useCallback(event => {
-    setToggleTransfer(event.target.value)
+    setToggleTransfer(false)
   }, [setToggleTransfer])
 
   const handleSubmit = async (e) => {
@@ -31,11 +33,12 @@ const TransferModal = ({setToggleTransfer}) =>{
           }
         }
       );
-      setSuccesMsg('Transfer successful');
+      
       setAddress('');
       setAmount('');
+      setSuccesMsg('Transfer successful');
       console.log('Transfer successful!');
-      // handleChange();
+      window.location.reload(false);
     } catch (err) {
       if(!err?.response) {
         // setErrMsg('No server Response');
@@ -49,7 +52,6 @@ const TransferModal = ({setToggleTransfer}) =>{
       console.log('Transfer failed, try again');
       errRef.current.focus();
     }
-    
   }
 
   return (
@@ -65,7 +67,7 @@ const TransferModal = ({setToggleTransfer}) =>{
         autoComplete='off' 
         onChange={(e) => setAddress(e.target.value)} 
         value={address}
-        // required 
+        required
         className="bg-white rounded-2xl outline-none border-2 duration-200 h-12 w-64 px-6 my-4 hover:drop-shadow-md focus:drop-shadow-md"
         />
         <input 
@@ -75,7 +77,7 @@ const TransferModal = ({setToggleTransfer}) =>{
         autoComplete='off' 
         onChange={(e) => setAmount(e.target.value)} 
         value={amount}
-        // required 
+        required 
         className="bg-white rounded-2xl outline-none border-2 duration-200 h-12 w-64 px-6 my-4 hover:drop-shadow-md focus:drop-shadow-md"
         />
         <div className='flex flex-row my-4'>

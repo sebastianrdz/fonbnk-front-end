@@ -4,6 +4,8 @@
   scroll-behavior: smooth;
 }
 
+html,body { height:100%; }
+
 .active  {
   color: #fff;
   background-color: #00B74F;

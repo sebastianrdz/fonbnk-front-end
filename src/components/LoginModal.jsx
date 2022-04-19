@@ -1,7 +1,8 @@
 import React , { useCallback, useRef, useState, useEffect } from 'react';
-import { Navigate, useNavigate, useLocation } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../hooks';
 import axios from '../api/axios';
+
 const LOGIN_URL = '/users/login'
 
 const LoginModal = ({setToggleLogin}) =>{
@@ -14,7 +15,6 @@ const LoginModal = ({setToggleLogin}) =>{
   const userRef = useRef();
   const errRef = useRef();
 
-  // const [user, setUser] = useState('');
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
   const [errMsg, setErrMsg] = useState('');
@@ -27,19 +27,15 @@ const LoginModal = ({setToggleLogin}) =>{
     setErrMsg('');
   }, [user, pwd])
 
+  const handleChange = useCallback(event => {
+    setToggleLogin(false)
+  }, [setToggleLogin])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Conect with back end
-    // Save user id && token
-    // Redirect to dashboard
     try {
       const response = await axios.post(LOGIN_URL, 
         { username: user, password: pwd }
-        // JSON.stringify({ username: user, password: pwd }),
-        // {
-        //   headers: { 'Content-Type':'application/json'},
-        //   withCredentials: true
-        // }
       );
       
       const accessToken = response?.data?.token;
@@ -62,13 +58,7 @@ const LoginModal = ({setToggleLogin}) =>{
       console.log('Login failed, try again');
       errRef.current.focus();
     }
-    
   }
-  
-
-  const handleChange = useCallback(event => {
-    setToggleLogin(event.target.value)
-  }, [setToggleLogin])
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col p-6 bg-white drop-shadow-md rounded-2xl m-auto">
