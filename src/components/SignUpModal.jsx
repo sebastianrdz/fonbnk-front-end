@@ -82,8 +82,6 @@ const SignUpModal = ({setToggleLogin}) => {
       console.log('Register failed, try again');
       errRef.current.focus();
     }
-
-    
   }
 
   return (
